@@ -3,6 +3,7 @@ import { Component } from 'react'
 import { loadPosts } from '../../utils/load-post'
 import { Posts } from '../../components/Posts'
 import { Button } from '../../components/Button'
+import { TextInput } from '../../components/TextInput'
 
 export class Home extends Component {
   //class fields subs constructor and super
@@ -88,15 +89,13 @@ export class Home extends Component {
 
     return (
       <section className='container' >
+        
+        <div className='search-container'>
         {!!searchValue && ( 
         <h1>Search Value: {searchValue}</h1>
         )}
-       
-        <input 
-          onChange={this.handleChange}
-          value={searchValue}
-          type="search"
-        /><br/><br/>
+       <TextInput searchValue={searchValue} handleChange={this.handleChange}/>
+       </div>
 
         {filtedPosts.length > 0 &&(
           <Posts posts={filtedPosts} />
